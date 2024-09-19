@@ -1,0 +1,36 @@
+name: NodeJS CI Starter Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup NodeJS Version - 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Unit Testing
+      run: npm test --if-present
+
+    - name: Run Coverage
+      run: npm run coverage --if-present
+
+    - name: Upload Reports to AWS
+      # Add appropriate commands to upload reports, for example:
+      # run: aws s3 cp coverage-report s3://your-bucket/path/
+
+    - name: Slack Notification
+      # Add Slack GitHub Action to notify team on workflow completion
+      # e.g. uses: rtCamp/action-slack-notify@v2
