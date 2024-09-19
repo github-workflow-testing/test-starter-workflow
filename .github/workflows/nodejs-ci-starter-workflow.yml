@@ -33,4 +33,4 @@ jobs:
 
     - name: Slack Notification
       # Add Slack GitHub Action to notify team on workflow completion
-      # e.g. uses: rtCamp/action-slack-notify@v2
+      # e.g. uses: rtCamp/action-slack-notify@v2 #
